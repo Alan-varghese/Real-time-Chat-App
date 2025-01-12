@@ -1,8 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -16,9 +20,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     User? user = await signInWithEmailPassword(email, password);
     if (user != null) {
-      print("User signed up: ${user.email}");
+      if (kDebugMode) {
+        print("User signed up: ${user.email}");
+      }
     } else {
-      print("Sign-up failed");
+      if (kDebugMode) {
+        print("Sign-up failed");
+      }
     }
   }
 
@@ -28,9 +36,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     User? user = await signInWithEmailPassword(email, password);
     if (user != null) {
-      print("User signed in: ${user.email}");
+      if (kDebugMode) {
+        print("User signed in: ${user.email}");
+      }
     } else {
-      print("Sign-in failed");
+      if (kDebugMode) {
+        print("Sign-in failed");
+      }
     }
   }
 
